@@ -11,7 +11,7 @@ docker pull rokdev/bddocker
 
 Start the container in the current directory:
 ```
-docker run --rm -u $USER -ti -v "$PWD":/home/browndye/data -w /home/browndye/data rokdev/bddocker
+docker run --rm -ti -u 1000:1000 -v "$PWD":/home/browndye/data -w /home/browndye/data rokdev/bddocker
 ```
 
 Now the container is running and we can start a BrownDye job (using the Thrombin example):
@@ -26,8 +26,8 @@ nam_simulation t-m-simulation.xml # this takes about 20min to run
 cat results.xml
 ```
 After we are finished we can quit the container:
-
-    exit
-
+```
+exit
+```
 
 ###### This project is supported by [NBCR](http://nbcr.ucsd.edu).
