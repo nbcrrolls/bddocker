@@ -2,16 +2,18 @@
 
 This docker image contains a complete software environment for running [BrownDye](http://browndye.ucsd.edu/) simulations. It also includes [PDB2PQR](http://www.poissonboltzmann.org/) and [APBS](http://www.poissonboltzmann.org/).
 
+Please [register](http://eepurl.com/by4eQr) your use of APBS and PDB2PQR.
+
 ## Using the container
 
 Pull the docker image:
 ```
-docker pull rokdev/bddocker
+docker pull rokdev/bddocker:v2.0
 ```
 
 Start the container in the current directory:
 ```
-docker run --rm -ti -u 1000:1000 -v "$PWD":/home/browndye/data -w /home/browndye/data rokdev/bddocker
+docker run --rm -ti -u 1000:1000 -v "$PWD":/home/browndye/data -w /home/browndye/data rokdev/bddocker:v2.0
 ```
 
 Now the container is running and we can start a BrownDye job (using the Thrombin example):
