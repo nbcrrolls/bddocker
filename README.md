@@ -43,4 +43,6 @@ After we are finished we can quit the container:
 exit
 ```
 
+Latest docker images builds can be seen on [Docker Hub](https://cloud.docker.com/repository/docker/rokdev/bddocker).
+
 ###### This project is supported by [NBCR](http://nbcr.ucsd.edu).
