@@ -1,6 +1,6 @@
 # Docker container for molecular electrostatic calculations using PDB2PQR/APBS and Brownian dynamics with BrownDye.
 
-This docker image contains a complete software environment for running [BrownDye (verion 1 or 2)](http://browndye.ucsd.edu/) simulations. It also includes [PDB2PQR](http://www.poissonboltzmann.org/) and [APBS](http://www.poissonboltzmann.org/).
+This docker image contains a complete software environment for running [BrownDye (version 1 or 2)](http://browndye.ucsd.edu/) simulations. It also includes [PDB2PQR](http://www.poissonboltzmann.org/) and [APBS](http://www.poissonboltzmann.org/).
 
 Please [register](http://eepurl.com/by4eQr) your use of APBS and PDB2PQR.
 
