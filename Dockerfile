@@ -59,8 +59,10 @@ ENV BD2_PATH /opt/browndye2
 # add apbs
 RUN curl -L https://sourceforge.net/projects/apbs/files/apbs/apbs-${APBS_VERSION}/APBS-${APBS_VERSION}.${APBS_VERSION_MINOR}_Linux.zip/download -k -s --output /tmp/apbs.zip && \
     unzip /tmp/apbs.zip -d /opt && \
-    ln -s /opt/APBS-${APBS_VERSION}.${APBS_VERSION_MINOR}.Linux /opt/apbs
-
+    ln -s /opt/APBS-${APBS_VERSION}.${APBS_VERSION_MINOR}.Linux /opt/apbs && \
+    rm -f /opt/apbs/share/apbs/examples/protein-rna/*.dx && \
+    rm -f /tmp/apbs.zip
+    
 ENV APBS_PATH /opt/apbs
 
 # add pdb2pqr
