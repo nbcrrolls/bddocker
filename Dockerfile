@@ -1,7 +1,7 @@
 ################################################################################# 
 # Dockerfile 
 # 
-# Version:          3.0
+# Version:          3.1
 # Software:         BrownDye base image
 # Software Version: 2020-12-8
 # Description:      Docker image for BrownDye, APBS and PDB2PQR
@@ -18,7 +18,7 @@
 
 FROM ubuntu:20.04
 
-LABEL version="3.0"
+LABEL version="3.1"
 LABEL description="Docker image for BrownDye, APBS and PDB2PQR"
 MAINTAINER Robert Konecny <rok@ucsd.edu>
 
