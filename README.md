@@ -8,12 +8,12 @@ Please [register](http://eepurl.com/by4eQr) your use of APBS and PDB2PQR and at 
 
 Pull the docker image:
 ```
-docker pull rokdev/bddocker:v3.0
+docker pull rokdev/bddocker:latest
 ```
 
 Start the container in the current directory:
 ```
-docker run --rm -ti -u 1000:1000 -v "$PWD":/home/browndye/data -w /home/browndye/data rokdev/bddocker:v3.0
+docker run --rm -ti -u 1000:1000 -v "$PWD":/home/browndye/data -w /home/browndye/data rokdev/bddocker:latest
 ```
 
 Now the container is running and we can start a BrownDye2 job (using the Thrombin example):
