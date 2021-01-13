@@ -1,15 +1,15 @@
 ################################################################################# 
 # Dockerfile 
 # 
-# Version:          3.1
+# Version:          3.2
 # Software:         BrownDye base image
-# Software Version: 2020-12-8
+# Software Version: 2021-01-13
 # Description:      Docker image for BrownDye, APBS and PDB2PQR
 # Website:          http://browndye.ucsd.edu
 # Tags:             Electrostatics|Brownian Dynamics|Solvation
 # Base Image:       ubuntu:20.04
 # Build Cmd:        docker build rokdev/bddocker . 
-# Build Cmd:        docker build --tag=bddocker:v3.0 -f ./Dockerfile .
+# Build Cmd:        docker build --tag=bddocker:v3.2 -f ./Dockerfile .
 # Pull Cmd:         docker pull rokdev/bddocker 
 # Run Cmd:          docker run --rm -it -u 1000:1000 \
 #                      -v "$PWD":/home/browndye/data \
@@ -18,7 +18,7 @@
 
 FROM ubuntu:20.04
 
-LABEL version="3.1"
+LABEL version="3.2"
 LABEL description="Docker image for BrownDye, APBS and PDB2PQR"
 MAINTAINER Robert Konecny <rok@ucsd.edu>
 
@@ -26,6 +26,7 @@ ENV APBS_VERSION 3.0
 ENV APBS_VERSION_MINOR 0
 ENV PDB2PQR_VERSION 3.0.1
 ENV BD2_VERSION "2.0-6_Dec_2020"
+ENV BD2_VERSION "2.0-8_Jan_2021"
 ENV BD1_VERSION "1.0-13_Feb_2019"
 ENV BD_URL https://browndye.ucsd.edu
 
@@ -40,6 +41,13 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     curl -k $BD_URL/browndye2.tar.gz | tar xzf - -C /opt && \
     cd /opt/browndye2 && curl -k -sO $BD_URL/browndye2/doc/fixes.html && \
     make all && \
+    BD_VERSION=`sed  -n 's/.*\(BrownDye.*202.\).*/\1/p' /opt/browndye2/source/src/input_output/release_info.hh` && \
+    BD_HASH=`curl -sL $BD_URL/browndye2.tar.gz | md5sum | cut -d ' ' -f 1` && \
+    BD_DATE=`date --date="$(curl -sI $BD_URL/browndye2.tar.gz | sed 's/Last-Modified: \(.*\)/\1/p;d')" +%FT%T%Z` && \
+    echo $BD_VERSION >> /opt/browndye2/VERSION && \
+    echo "source: $BD_URL/browndye2.tar.gz" >> /opt/browndye2/VERSION && \
+    echo "created on:  $BD_DATE" >> /opt/browndye2/VERSION && \
+    echo "md2sum: $BD_HASH" >> /opt/browndye2/VERSION && \
     mkdir lib && cd lib && \
     curl -k -sO ${BD_URL}/coffdrop.xml.gz && \
     curl -k -sO ${BD_URL}/connectivity.xml && \
