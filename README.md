@@ -22,7 +22,7 @@ Now the container is running and we can start a BrownDye2 simulation (using the 
 ```
 cp -ai $BD2_PATH/examples/thrombin .
 cd thrombin
-sed -i 's/<n_trajectories> 10000 /<n_trajectories> 100 /' t_m_simulation.xml.bak
+sed -i 's/<n_trajectories> 1000 /<n_trajectories> 100 /' input.xml.bak
 make all
 bd_top input.xml
 nam_simulation thrombin_tmodulin_simulation.xml # takes about 4 min to run
