@@ -1,15 +1,15 @@
 ################################################################################# 
 # Dockerfile 
 # 
-# Version:          3.3
+# Version:          3.4
 # Software:         BrownDye base image
-# Software Version: 2021-01-19
+# Software Version: 2021-01-28
 # Description:      Docker image for BrownDye, APBS and PDB2PQR
 # Website:          https://browndye.ucsd.edu
 # Tags:             Electrostatics|Brownian Dynamics|Solvation
 # Base Image:       ubuntu:20.04
 # Build Cmd:        docker build rokdev/bddocker . 
-# Build Cmd:        docker build --tag=bddocker:v3.3 -f ./Dockerfile .
+# Build Cmd:        docker build --tag=bddocker:v3.4 -f ./Dockerfile .
 # Pull Cmd:         docker pull rokdev/bddocker 
 # Run Cmd:          docker run --rm -it -u 1000:1000 \
 #                      -v "$PWD":/home/browndye/data \
@@ -18,15 +18,14 @@
 
 FROM ubuntu:20.04
 
-LABEL version="3.3"
+LABEL version="3.4"
 LABEL description="Docker image for BrownDye, APBS and PDB2PQR"
 MAINTAINER Robert Konecny <rok@ucsd.edu>
 
 ENV APBS_VERSION 3.0
 ENV APBS_VERSION_MINOR 0
 ENV PDB2PQR_VERSION 3.0.1
-ENV BD2_VERSION "2.0-6_Dec_2020"
-ENV BD2_VERSION "2.0-18_Jan_2021"
+ENV BD2_VERSION "2.0-27_Jan_2021"
 ENV BD1_VERSION "1.0-13_Feb_2019"
 ENV BD_URL https://browndye.ucsd.edu
 
@@ -34,7 +33,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get install -y -q --no-install-recommends curl make gcc g++ ocaml \
     libexpat-dev nano readline-common gfortran wget liblapack-dev libboost-dev \
-    unzip python3-pip libtinfo5 git cmake apbs && \
+    unzip python3-pip libtinfo5 git cmake less vim-nox apbs && \
     curl -sk $BD_URL/browndye.tar.gz | tar xzf - -C /opt && \
     cd /opt/browndye && curl -k -sO $BD_URL/browndye/doc/fixes.html && \
     make all && \
