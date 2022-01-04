@@ -30,7 +30,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && \
     apt-get install -y -q --no-install-recommends curl wget make cmake \
     liblapack-dev nano readline-common unzip python3-pip libtinfo5 less vim-nox apbs && \
-    curl -sk $BD_URL/downloads/browndye2-ubuntu-20.04-2022-01-04.tar.gz | tar xzf - -C /opt && \
+    curl -sk $BD_URL/downloads/browndye2-ubuntu-20.04.tar.gz | tar xzf - -C /opt && \
     curl -sLk http://mirrors.kernel.org/ubuntu/pool/main/r/readline/libreadline7_7.0-3_amd64.deb \
           --output /tmp/libreadline7_7.0-3_amd64.deb && \
     dpkg -i /tmp/libreadline7_7.0-3_amd64.deb && \
